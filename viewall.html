@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/jquery.validate.js"></script>
+    <script src="js/additional-methods.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    
+
+</head>
+
+<body>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active">Viewall</li>
+    </ol>
+    <div class="row mb-2">
+        <div class="col-sm mb-2">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mb-1 mt-1" data-toggle="modal" data-target="#exampleModal" id="addbtn">
+  Add Employee
+</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModel">Add Employee</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <div class="modal-body ">
+                            <form class="form-horizontal" action="/action_page.php">
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">EmpNo:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control empno" id="empno" name="empno" placeholder="Enter Employee No.">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Name:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control name" id="name" name="name" placeholder="Enter Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Email:</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control email" id="email" name="email" placeholder="Enter email">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Mobile:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control mobile" id="mobile" placeholder="Enter mobile no.">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Designation:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control desig" id="desig" name="desig" placeholder="Enter Designation">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Department:</label>
+                                    <div class="col-sm-10">
+                                        <select type="text" class="form-control branch" id="branch" name="branch">
+                                            <option value="">Select Department</option>
+                                            <option value="ise">ISE</option>
+                                            <option value="cse">CSE</option>
+                                            <option value="ece">ECE</option>
+                                            <option value="civil">CIVIL</option>
+                                            <option value="mech">MECH</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Qualification:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control qualifi" id="qualifi" name="qualifi" placeholder="Enter Qualification">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-2">Salary:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control salary" id="salary" name="salary" placeholder="Enter Salary">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="addEmp">Add Employee</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div> 
+    <div class="row mt-1 mb-4 no-gutters">
+        <div class="col-md-1"></div>
+        <div class="col-md-6 display-block">
+            <input type="text" class="form-control" id='searchtxt' placeholder="Enter text to search" />
+        </div>
+        <div class="col-md-2 ml-1">
+            <select type="text" class="form-control dropdown" id="dropdown" name="dropdown">
+                <option value="">Select Department</option>
+                <option value="ise">ISE</option>
+                <option value="cse">CSE</option>
+                <option value="ece">ECE</option>
+                <option value="civil">CIVIL</option>
+                <option value="mech">MECH</option>
+                </select>
+        </div>
+        <div class="col-md-2 ml-1">
+            <button type="button" class="btn btn-primary" id="btn">Search</button>
+        </div>
+    </div>
+    <div class="content"></div>
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="js/viewall.js"></script>
+    <script src="js/storgae.js"></script>
+    
+</body>
+
+</html>
